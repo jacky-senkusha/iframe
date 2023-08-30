@@ -163,7 +163,13 @@ export default function Token({ params, searchParams }: TokenParams) {
               >
                 {!isNil(nftImages) ? (
                   nftImages.map((image, i) => (
-                    <img
+                    nftMetadata?.media[0].format === "mp4" ?
+                    <video controls autoPlay muted className="media" key={i}>
+                      <source
+                        src={image}
+                        type="video/mp4"
+                      />
+                    </video> : <img
                       key={i}
                       className="col-span-1 col-start-1 row-span-1 row-start-1 translate-x-0"
                       src={image}
