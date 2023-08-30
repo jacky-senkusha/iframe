@@ -126,6 +126,11 @@ export const Panel = ({
                 <li key={`${t.contract.address}-${t.tokenId}-${i}`} className="list-none">
                   <a href={openseaUrl} target="_blank" className="cursor-pointer">
                     <MediaViewer url={media} isVideo={isVideo} />
+                    {t?.contract?.tokenType === "ERC1155" ? (
+                      <span className="text-black">{t?.contract?.tokenType}, Balance: {t?.balance}</span>
+                    ) : (
+                      <span className="text-black">{t?.contract?.tokenType}</span>
+                    )}
                   </a>
                 </li>
               );
@@ -133,7 +138,7 @@ export const Panel = ({
           </ul>
         ) : (
           <div className={"h-full"}>
-            <p className="text-center text-sm text-gray-500">No collectables found</p>
+            <p className="text-center text-sm text-gray-500">No collectibles found</p>
           </div>
         )}
       </TabPanel>

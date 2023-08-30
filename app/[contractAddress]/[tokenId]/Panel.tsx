@@ -108,13 +108,18 @@ export const Panel = ({ className, approvalTokensCount, account, tokens, title }
               return (
                 <li key={`${t.contract.address}-${t.tokenId}-${i}`} className="list-none">
                   <MediaViewer url={media} isVideo={isVideo} />
+                  {t?.contract?.tokenType === "ERC1155" ? (
+                    <span className="text-black">{t?.contract?.tokenType}, Balance: {t?.balance}</span>
+                  ) : (
+                    <span className="text-black">{t?.contract?.tokenType}</span>
+                  )}        
                 </li>
               );
             })}
           </ul>
         ) : (
           <div className={"h-full"}>
-            <p className="text-sm text-gray-500 text-center">No collectables found</p>
+            <p className="text-sm text-gray-500 text-center">No collectibles found</p>
           </div>
         )}
       </TabPanel>
